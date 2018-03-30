@@ -10,10 +10,17 @@ const bodyParser = require('body-parser');
 // Node.js body parsing middleware.
 
 
+
 var app = express();
 const port = process.env.PORT;
 
 app.use(bodyParser.json());
+
+//if no route defiend
+app.get('/', (req, res) => res.status(200).send("TODO API!"));
+
+require('./routes/route.user')(app);
+require('./routes/route.todo')(app);
 
 app.listen(port, () => {
     console.log(`Todo API started up at port ${port}`);

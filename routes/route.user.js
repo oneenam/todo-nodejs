@@ -1,11 +1,12 @@
 var { User } = require('../models/model.user');
 var { database } = require('../db/database');
+var { authenticate } = require('../middleware/authenticate');
 const _ = require('lodash');
 
 
 module.exports = app => {
 
-    //public, no auth neded
+    //public, authentication: no
     /** login */
     app.post('/users/login', (req, res) => {
 
@@ -37,7 +38,10 @@ module.exports = app => {
 
     });
 
-    //private, auth needed 
-
+    //private, authentication: yes
+    /** user info */
+    app.get('/users/me', authenticate, (req, res) => {
+        res.send(req.user);
+    });
 
 };

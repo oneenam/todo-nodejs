@@ -18,7 +18,7 @@ Note: you can run test command to test all services using this command: `npm run
 #### Users
 ##### Registration
 
-* path: `users/registration`
+* path: `/users/registration`
 
 * method: `POST`
 
@@ -29,7 +29,7 @@ Note: you can run test command to test all services using this command: `npm run
 
 ##### Login
 
-* path: `users/login`
+* path: `/users/login`
 
 * method: `POST`
 
@@ -39,7 +39,7 @@ Note: you can run test command to test all services using this command: `npm run
 
 ##### Info
 
-* path: `users/me`
+* path: `/users/me`
 
 * method: `GET`
 
@@ -49,4 +49,91 @@ Note: you can run test command to test all services using this command: `npm run
 `{
     "_id": "5abe5d7f0133641a610a1873",
     "email": "userone@example.com"
+}`
+
+
+#### Todo
+##### Create
+
+* path: `/todos`
+
+* method: `POST`
+
+* params: `text` with Headers `x-auth` value
+
+* response: 
+`
+{
+    "completed": false,
+    "completedAt": null,
+    "_id": "5abeb3cbc93c6a26de0de378",
+    "text": "Todo 10",
+    "_creator": "5abe7f82732109205d53b690",
+    "__v": 0
+}
+`
+##### Select
+
+* path: `/todos`
+
+* method: `GET`
+
+* params: Headers `x-auth` value
+
+* response: 
+`
+{
+    "todos": [
+        {
+            "completed": true,
+            "completedAt": 1522442938973,
+            "_id": "5abea212e1bad3236bf906f1",
+            "text": "Todo 1",
+            "_creator": "5abe7f82732109205d53b690",
+            "__v": 0
+        }
+        ]
+}`
+
+
+##### Select
+
+* path: `/todos/:id`
+
+* method: `PATCH`
+
+* params: `text, completed` with Headers `x-auth` value
+
+* response: 
+`
+{
+    "todo": {
+        "completed": true,
+        "completedAt": 1522447531047,
+        "_id": "5abea212e1bad3236bf906f1",
+        "text": "Todo 10",
+        "_creator": "5abe7f82732109205d53b690",
+        "__v": 0
+    }
+}`
+
+##### Delete
+
+* path: `/todos/:id`
+
+* method: `DELETE`
+
+* params: Headers `x-auth` value
+
+* response: 
+`
+{
+    "todo": {
+        "completed": true,
+        "completedAt": 1522447531047,
+        "_id": "5abea212e1bad3236bf906f1",
+        "text": "Todo 10",
+        "_creator": "5abe7f82732109205d53b690",
+        "__v": 0
+    }
 }`

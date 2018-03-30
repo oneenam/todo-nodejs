@@ -1,0 +1,24 @@
+{
+  "name": "todo-nodejs",
+  "version": "1.0.0",
+  "description": "Express todo with mongoose",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oneenam/todo-nodejs.git"
+  },
+  "keywords": [
+    "nodejs",
+    "express",
+    "mongoose"
+  ],
+  "author": "Muhammad Enamul Huq Sarkar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/oneenam/todo-nodejs/issues"
+  },
+  "homepage": "https://github.com/oneenam/todo-nodejs#readme"
+}

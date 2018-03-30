@@ -1,9 +1,10 @@
 {
   "name": "todo-nodejs",
   "version": "1.0.0",
-  "description": "Express todo with mongoose",
+  "description": "Express todo API with mongoose",
   "main": "index.js",
   "scripts": {
+    "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

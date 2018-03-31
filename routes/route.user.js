@@ -14,14 +14,14 @@ module.exports = app => {
         var body = _.pick(req.body, ['email', 'password']);
         
 
-        User.findByCredentials(body.email, body.password).then((user) => {
+        User.findByCredentials(req.body.email, req.body.password).then((user) => {
             console.log("ok", user);
             return user.generateAuthToken().then((token) => {
                 res.header('x-auth', token).send(user);
             });
         }).catch((e) => {
             console.log("not ok", e);
-            res.status(400).send(e);
+            res.status(401).send(e);
         });
 
     });

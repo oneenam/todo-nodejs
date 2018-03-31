@@ -8,6 +8,9 @@
     "test": "export NODE_ENV=test || SET NODE_ENV=test && mocha ./**/*.test.js",
     "test-watch": "nodemon --exec 'npm test'"
   },
+  "engines": {
+    "node": "8.9.1"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/oneenam/todo-nodejs.git"

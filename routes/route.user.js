@@ -9,8 +9,9 @@ module.exports = app => {
     //public, authentication: no
     /** login */
     app.post('/users/login', (req, res) => {
+        res.status(200).send(req.body);
 
-        var body = _.pick(req.body, ['email', 'password']);
+        /*var body = _.pick(req.body, ['email', 'password']);
 
         User.findByCredentials(body.email, body.password).then((user) => {
             return user.generateAuthToken().then((token) => {
@@ -18,7 +19,7 @@ module.exports = app => {
             });
         }).catch((e) => {
             res.status(400).send(e);
-        });
+        });*/
 
     });
 

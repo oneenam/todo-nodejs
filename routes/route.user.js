@@ -9,17 +9,20 @@ module.exports = app => {
     //public, authentication: no
     /** login */
     app.post('/users/login', (req, res) => {
-        res.status(200).send(req.body);
+        
 
-        /*var body = _.pick(req.body, ['email', 'password']);
+        var body = _.pick(req.body, ['email', 'password']);
+        
 
         User.findByCredentials(body.email, body.password).then((user) => {
+            console.log("ok", user);
             return user.generateAuthToken().then((token) => {
                 res.header('x-auth', token).send(user);
             });
         }).catch((e) => {
+            console.log("not ok", e);
             res.status(400).send(e);
-        });*/
+        });
 
     });
 

@@ -9,9 +9,9 @@ module.exports = app => {
     //public, authentication: no
     /** login */
     app.post('/users/login', (req, res) => {
-        
+
         var body = _.pick(req.body, ['email', 'password']);
-        
+
         User.findByCredentials(body.email, body.password).then((user) => {
             console.log("ok", user);
             return user.generateAuthToken().then((token) => {
@@ -43,7 +43,7 @@ module.exports = app => {
     //private, authentication: yes
     /** user info */
     app.get('/users/me', authenticate, (req, res) => {
-        res.send(req.user);
+        res.status(200).send(req.user);
     });
 
 };

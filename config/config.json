@@ -6,7 +6,7 @@
     },
     "development": {
         "PORT": 3000,        
-        "MONGODB_URI": "mongodb://testuser:asdf12345678@ds229909.mlab.com:29909/todoapp",
+        "MONGODB_URI": "mongodb://localhost:27017/TodoApp",
         "JWT_SECRET": "nodejs3000express3000mongodb2018"
     }
 }

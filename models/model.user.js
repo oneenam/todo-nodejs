@@ -72,7 +72,9 @@ UserSchema.statics.findByToken = function (token) {
     var decoded;
 
     try {
-        decoded = jwt.verify(token, process.env.JWT_SECRET);
+        //decoded = jwt.verify(token, process.env.JWT_SECRET);
+        decoded = jwt.verify(token, "nodejs3000express3000mongodb2018");
+        
     } catch (e) {
         return Promise.reject();
     }

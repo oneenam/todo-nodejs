@@ -13,6 +13,7 @@ module.exports = app => {
         var body = _.pick(req.body, ['email', 'password']);
 
         User.findByCredentials(body.email, body.password).then((user) => {
+            
             return user.generateAuthToken().then((token) => {
                 res.header('x-auth', token).send(user);
             });
@@ -34,7 +35,6 @@ module.exports = app => {
         }).then((token) => {
             res.header('x-auth', token).send(user);
         }).catch((e) => {
-            console.info(e, body);
             res.status(400).send(e);
         });
 

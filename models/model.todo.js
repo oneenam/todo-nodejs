@@ -20,7 +20,7 @@ var Todo = mongoose.model('Todo', {
         type: Number,
         default: null
     },
-    createdAt: { type: Date, default: Date.now },
+    createdAt: { type: Date, default: new Date().getTime() },
     _creator: {
         type: mongoose.Schema.Types.ObjectId,
         required: true

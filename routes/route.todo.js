@@ -74,21 +74,29 @@ module.exports = app => {
         }
 
         if (_.isBoolean(body.completed) && body.completed) {
+            body.completed = true;
             body.completedAt = new Date().getTime();
         } else {
             body.completed = false;
             body.completedAt = null;
         }
 
-        Todo.findOneAndUpdate({ _id: id, _creator: req.user._id }, { $set: body }, { new: true }).then((todo) => {
+        Todo.findOneAndUpdate({ _id: id, _creator: req.user._id }, { $set: body }, { new: true }, function (err, tood) {
+            if (err) {
+                return res.status(400).send(err);
+            } else if (!todo) {
+                return res.status(404).send();
+            }
+            res.send({ todo });
+        });
+        /*.then((todo) => {
             if (!todo) {
                 return res.status(404).send();
             }
-
             res.send({ todo });
         }).catch((e) => {
             res.status(400).send(e);
-        })
+        })*/
     });
 
     // delete todo

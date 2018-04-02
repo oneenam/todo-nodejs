@@ -21,7 +21,7 @@ var Todo = mongoose.model('Todo', {
         type: Number,
         default: null
     },
-    createdAt: { type: Date, default: moment(new Date()).format('DD MMM YYYY') },
+    createdAt: { type: String, default: moment(new Date().getTime()).format('DD MMM YYYY') },
     _creator: {
         type: mongoose.Schema.Types.ObjectId,
         required: true

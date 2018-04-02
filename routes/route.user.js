@@ -33,6 +33,7 @@ module.exports = app => {
         user.save().then(() => {
             return user.generateAuthToken();
         }).then((token) => {
+            res.header("Access-Control-Allow-Headers", "X-Requested-With");
             res.header('x-auth', token).send(user);
         }).catch((e) => {
             res.status(400).send(e);

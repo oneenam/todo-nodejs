@@ -74,7 +74,7 @@ module.exports = app => {
             return res.status(404).send();
         }
 
-        res.send({ body: id });
+        res.send({ body: 'ok' });
 
         if (_.isBoolean(req.body.completed) && req.body.completed) {
             body.completed = true;

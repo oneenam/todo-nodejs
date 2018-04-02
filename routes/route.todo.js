@@ -28,7 +28,7 @@ module.exports = app => {
             //deleted: false
         }).then((todos) => {
 
-            let result = _.chain(data)
+            let result = _.chain(todos)
                 .groupBy("createdAt")
                 .pairs()
                 .map(function (currentItem) {

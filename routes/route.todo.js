@@ -30,7 +30,7 @@ module.exports = app => {
 
             let result = _.chain(todos)
                 .groupBy("createdAt")
-                .pairs()
+                .toPairs()
                 .map(function (currentItem) {
                     return _.object(_.zip(["text", "completed", "_creator"], currentItem));
                 }).value();

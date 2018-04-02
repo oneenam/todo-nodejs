@@ -28,12 +28,13 @@ module.exports = app => {
             //deleted: false
         }).then((todos) => {
 
-            let result = _(todos)
+            /*let result = _(todos)
                 .groupBy(x => x.createdAt)
                 .map((value, key) => ({ createdAt: key, todos: value }))
-                .value();
+                .value();*/
 
-            res.send({ todos: result });
+            //res.send({ todos: result });
+            res.send({ todos });
 
         }, (e) => {
             res.status(400).send(e);
@@ -69,7 +70,6 @@ module.exports = app => {
         var id = req.params.id;
         var body = _.pick(req.body, ['text', 'completed']);
 
-
         if (!ObjectID.isValid(id)) {
             return res.status(404).send();
         }
@@ -81,8 +81,6 @@ module.exports = app => {
             body.completed = false;
             body.completedAt = null;
         }
-
-        //res.send({ body: body, _creator: req.user._id });
 
         Todo.findOneAndUpdate({ _id: id, _creator: req.user._id }, { $set: body }, { new: true })
             .then((todo) => {

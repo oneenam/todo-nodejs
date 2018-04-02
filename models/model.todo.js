@@ -1,4 +1,5 @@
 var mongoose = require('mongoose');
+var moment = require('moment');
 
 var Todo = mongoose.model('Todo', {
     text: {
@@ -20,7 +21,7 @@ var Todo = mongoose.model('Todo', {
         type: Number,
         default: null
     },
-    createdAt: { type: Date, default: new Date().getTime() },
+    createdAt: { type: Date, default: moment(new Date()).format('DD MMM YYYY') },
     _creator: {
         type: mongoose.Schema.Types.ObjectId,
         required: true

@@ -65,24 +65,24 @@ module.exports = app => {
 
 
     // update/complete todo
-    app.patch('/todos/:id', authenticate, (req, res) => {
-        var id = req.params.id;
-        var body = _.pick(req.body, ['text', 'completed']);
+    app.patch('/todos', authenticate, (req, res) => {
+        //var id = req.params.id;
+        var body = _.pick(req.body, ['id','text', 'completed']);
         res.send({ body });
-        
+
         if (!ObjectID.isValid(id)) {
             return res.status(404).send();
         }
 
-        if (_.isBoolean(body.completed) && body.completed) {
+        if (_.isBoolean(req.body.completed) && req.body.completed) {
             body.completed = true;
             body.completedAt = new Date().getTime();
         } else {
             body.completed = false;
             body.completedAt = null;
         }
-        
-        
+
+
         /*Todo.findOneAndUpdate({ _id: id, _creator: req.user._id }, { $set: body }, { returnNewDocument: true }, function (err, todo) {
             if (err) {
                 return res.status(400).send(err);

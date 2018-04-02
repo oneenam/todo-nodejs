@@ -81,7 +81,7 @@ module.exports = app => {
             body.completedAt = null;
         }
 
-        Todo.findOneAndUpdate({ _id: id, _creator: req.user._id }, { $set: body }, { returnOriginal: false }, function (err, todo) {
+        Todo.findOneAndUpdate({ _id: id, _creator: req.user._id }, { $set: body }, { returnNewDocument: true }, function (err, todo) {
             if (err) {
                 return res.status(400).send(err);
             } else if (!todo) {

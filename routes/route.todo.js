@@ -74,8 +74,6 @@ module.exports = app => {
             return res.status(404).send();
         }
 
-        res.send({ body });
-
         if (_.isBoolean(req.body.completed) && req.body.completed) {
             body.completed = true;
             body.completedAt = new Date().getTime();
@@ -85,14 +83,15 @@ module.exports = app => {
         }
 
 
-        /*Todo.findOneAndUpdate({ _id: id, _creator: req.user._id }, { $set: body }, { returnNewDocument: true }, function (err, todo) {
+        Todo.findOneAndUpdate({ _id: id, _creator: req.user._id }, { $set: body }, { returnNewDocument: true }, function (err, todo) {
             if (err) {
                 return res.status(400).send(err);
             } else if (!todo) {
                 return res.status(404).send();
             }
             res.send({ todo });
-        });*/
+        });
+        
         /*.then((todo) => {
             if (!todo) {
                 return res.status(404).send();

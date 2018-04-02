@@ -29,19 +29,12 @@ module.exports = app => {
         }).then((todos) => {
 
             let result = _(todos)
-            .groupBy(x => x.createdAt)
-            .map((value, key) => ({createdAt: key, todos: value}))
-            .value();
-
-            /*let result = _.chain(todos)
-                .groupBy("createdAt")
-                .toPairs()
-                .map(function (currentItem) {
-                    return _.object(_.zip(["text", "completed", "_creator"], currentItem));
-                }).value();*/
+                .groupBy(x => x.createdAt)
+                .map((value, key) => ({ createdAt: key, todos: value }))
+                .value();
 
             res.send({ todos: result });
-            
+
         }, (e) => {
             res.status(400).send(e);
         });

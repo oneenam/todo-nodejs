@@ -9,12 +9,13 @@ const express = require('express');
 const bodyParser = require('body-parser');
 // Node.js body parsing middleware.
 
-
+var cors = require('cors')
 
 var app = express();
 const port = process.env.PORT;
 
 app.use(bodyParser.json());
+app.use(cors({ credentials: true, origin: true }));
 
 //if no route defiend
 app.get('/', (req, res) => res.status(200).send("TODO API!"));

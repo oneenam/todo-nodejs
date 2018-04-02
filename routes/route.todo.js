@@ -65,10 +65,10 @@ module.exports = app => {
 
 
     // update/complete todo
-    app.post('/todos/update', authenticate, (req, res) => {
-        //var id = req.params.id;
-        var body = _.pick(req.body, ['id','text', 'completed']);
-        res.send({ req });
+    app.patch('/todos/:id', authenticate, (req, res) => {
+        var id = req.params.id;
+        var body = _.pick(req.body, ['text', 'completed']);
+        res.send({ body: req.body });
 
         if (!ObjectID.isValid(id)) {
             return res.status(404).send();

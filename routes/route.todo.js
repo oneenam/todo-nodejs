@@ -68,7 +68,8 @@ module.exports = app => {
     app.patch('/todos/:id', authenticate, (req, res) => {
         var id = req.params.id;
         var body = _.pick(req.body, ['text', 'completed']);
-
+        res.send({ body });
+        
         if (!ObjectID.isValid(id)) {
             return res.status(404).send();
         }
@@ -80,7 +81,7 @@ module.exports = app => {
             body.completed = false;
             body.completedAt = null;
         }
-        res.send({ body });
+        
         
         /*Todo.findOneAndUpdate({ _id: id, _creator: req.user._id }, { $set: body }, { returnNewDocument: true }, function (err, todo) {
             if (err) {

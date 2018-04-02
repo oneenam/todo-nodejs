@@ -68,7 +68,7 @@ module.exports = app => {
     app.patch('/todos/:id', authenticate, (req, res) => {
         var id = req.params.id;
         var body = _.pick(req.body, ['text', 'completed']);
-        
+
 
         if (!ObjectID.isValid(id)) {
             return res.status(404).send();
@@ -82,25 +82,17 @@ module.exports = app => {
             body.completedAt = null;
         }
 
-        res.send({ body: body, _creator: req.user._id });
-        
-        /*Todo.findOneAndUpdate({ _id: id, _creator: req.user._id }, { $set: body }, { returnNewDocument: true }, function (err, todo) {
-            if (err) {
-                return res.status(400).send(err);
-            } else if (!todo) {
-                return res.status(404).send();
-            }
-            res.send({ todo });
-        });*/
-        
-        /*.then((todo) => {
-            if (!todo) {
-                return res.status(404).send();
-            }
-            res.send({ todo });
-        }).catch((e) => {
-            res.status(400).send(e);
-        })*/
+        //res.send({ body: body, _creator: req.user._id });
+
+        Todo.findOneAndUpdate({ _id: id, _creator: req.user._id }, { $set: body }, { new: true })
+            .then((todo) => {
+                if (!todo) {
+                    return res.status(404).send();
+                }
+                res.send({ todo });
+            }).catch((e) => {
+                res.status(400).send(e);
+            })
     });
 
     // delete todo

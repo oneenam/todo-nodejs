@@ -27,7 +27,16 @@ module.exports = app => {
             _creator: req.user._id
             //deleted: false
         }).then((todos) => {
-            res.send({ todos });
+
+            let result = _.chain(data)
+                .groupBy("createdAt")
+                .pairs()
+                .map(function (currentItem) {
+                    return _.object(_.zip(["text", "completed", "_creator"], currentItem));
+                }).value();
+
+            res.send({ todos: result });
+            
         }, (e) => {
             res.status(400).send(e);
         });

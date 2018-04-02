@@ -28,13 +28,13 @@ module.exports = app => {
             //deleted: false
         }).then((todos) => {
 
-            /*let result = _(todos)
+            let result = _(todos)
                 .groupBy(x => x.createdAt)
                 .map((value, key) => ({ createdAt: key, todos: value }))
-                .value();*/
+                .value();
 
-            //res.send({ todos: result });
-            res.send({ todos });
+            res.send({ todos: result });
+            //res.send({ todos });
 
         }, (e) => {
             res.status(400).send(e);

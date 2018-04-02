@@ -68,7 +68,7 @@ module.exports = app => {
     app.patch('/todos', authenticate, (req, res) => {
         //var id = req.params.id;
         var body = _.pick(req.body, ['id','text', 'completed']);
-        res.send({ body });
+        res.send({ id: req.body.id });
 
         if (!ObjectID.isValid(id)) {
             return res.status(404).send();

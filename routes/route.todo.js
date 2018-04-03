@@ -25,7 +25,6 @@ module.exports = app => {
     app.get('/todos', authenticate, (req, res) => {
         Todo.find({
             _creator: req.user._id
-            //deleted: false
         }).then((todos) => {
 
             let result = _(todos)
@@ -34,7 +33,6 @@ module.exports = app => {
                 .value();
 
             res.send({ todos: result });
-            //res.send({ todos });
 
         }, (e) => {
             res.status(400).send(e);
@@ -51,7 +49,6 @@ module.exports = app => {
 
         Todo.findOne({
             _id: id,
-            //deleted: false,
             _creator: req.user._id
         }).then((todo) => {
             if (!todo) {

@@ -12,11 +12,6 @@ var Todo = mongoose.model('Todo', {
         type: Boolean,
         default: false
     },
-    //to keep history we can use it instead delete data permanently
-    /*deleted: {
-        type: Boolean,
-        default: false
-    },*/
     completedAt: {
         type: Number,
         default: null

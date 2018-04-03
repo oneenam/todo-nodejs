@@ -24,7 +24,7 @@ Note: you can run test command to test all services using this command: `npm run
 
 * params: `email, password`
 
-* response: `Status 200 OK` with Headers `x-auth` value
+* response: `Status 200 OK` with Headers `xauth` value
 
 
 ##### Login
@@ -35,7 +35,7 @@ Note: you can run test command to test all services using this command: `npm run
 
 * params: `email, password`
 
-* response: `Status 200 OK` with Headers `x-auth` value
+* response: `Status 200 OK` with Headers `xauth` value
 
 ##### Info
 
@@ -43,7 +43,7 @@ Note: you can run test command to test all services using this command: `npm run
 
 * method: `GET`
 
-* params: Headers `x-auth`
+* params: Headers `xauth`
 
 * response: 
 `{
@@ -59,7 +59,7 @@ Note: you can run test command to test all services using this command: `npm run
 
 * method: `POST`
 
-* params: `text` with Headers `x-auth` value
+* params: `text` with Headers `xauth` value
 
 * response: 
 `
@@ -78,21 +78,27 @@ Note: you can run test command to test all services using this command: `npm run
 
 * method: `GET`
 
-* params: Headers `x-auth` value
+* params: Headers `xauth` value
 
 * response: 
 `
 {
     "todos": [
         {
-            "completed": true,
-            "completedAt": 1522442938973,
-            "_id": "5abea212e1bad3236bf906f1",
-            "text": "Todo 1",
-            "_creator": "5abe7f82732109205d53b690",
-            "__v": 0
+            "createdAt": "01 Apr 2018",
+            "todos": [
+                {
+                    "completed": true,
+                    "completedAt": 1522760568650,
+                    "createdAt": "01 Apr 2018",
+                    "_id": "5ac211b13848730014d2005b",
+                    "text": "Todo test 1",
+                    "_creator": "5ac20b1d5f08a700145139bb",
+                    "__v": 0
+                }
+            ]
         }
-        ]
+    ]
 }`
 
 
@@ -102,7 +108,7 @@ Note: you can run test command to test all services using this command: `npm run
 
 * method: `PATCH`
 
-* params: `text, completed` with Headers `x-auth` value
+* params: `text, completed` with Headers `xauth` value
 
 * response: 
 `
@@ -123,7 +129,7 @@ Note: you can run test command to test all services using this command: `npm run
 
 * method: `DELETE`
 
-* params: Headers `x-auth` value
+* params: Headers `xauth` value
 
 * response: 
 `
